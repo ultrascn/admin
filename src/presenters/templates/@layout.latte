@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="robots" content="noindex, nofollow">
+
+	<title>{ifset title}{include title|stripHtml|trim} | {/ifset}{$administration->getTitle()}</title>
+
+	{var $assetsManager = $administration->getAssetsManager()}
+
+	<script n:if="!$assetsManager->isProductionMode()">
+	less = {
+		env: 'development',
+		relativeUrls: true
+	};
+	</script>
+
+	{foreach $assetsManager->getStylesheets($assetsManager->isProductionMode() ? 'production' : 'development') as $assetFile}
+		{var $assetFileRel = 'stylesheet'}
+
+		{if $assetFile->isOfType('less')}
+			{var $assetFileRel = 'stylesheet/less'}
+		{/if}
+
+		<link rel="{$assetFileRel}" type="text/css" href="{$assetsManager->getPath($assetFile->getPath(), $basePath)}">
+	{/foreach}
+
+	<link rel="shortcut icon" href="{$assetsManager->getPath('favicon.ico', $basePath)}">
+	{block head}{/block}
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="header__inner">
+				<a n:href="$administration->getHomepagePresenter()" rel="home" class="logo">{$administration->getTitle()}</a>
+
+				{if $user->isLoggedIn()}
+					{control navigationMain}
+				{/if}
+			</div>
+		</div>
+
+		<div class="content">
+			{default $pageContentWide = FALSE}
+			<div n:class="content-primary, $pageContentWide ? content-primary--wide">
+				<div class="content-primary__inner">
+					<div n:if="!empty($flashes)" class="flash-messages">
+						<div n:foreach="$flashes as $flash" n:class="flash-message, 'flash-message--' . $flash->type">{$flash->message}</div>
+					</div>
+
+					{if $user->isLoggedIn()}
+						{control breadcrumbs}
+					{/if}
+
+					<div class="content-block">
+						{include content}
+					</div>
+				</div>
+			</div>
+
+			{if $user->isLoggedIn()}
+				{control navigationSub}
+			{/if}
+		</div>
+
+		<div class="footer">
+			<div class="footer__inner">
+				<div class="footer__block">
+					&copy; <a href="https://www.janpecha.cz/">Jan Pecha</a>, 2017-{date('Y')}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{block scripts}
+	{foreach $assetsManager->getScripts($assetsManager->isProductionMode() ? 'production' : 'development') as $assetFile}
+		<script src="{$assetsManager->getPath($assetFile->getPath(), $basePath)}"></script>
+	{/foreach}
+	{/block}
+</body>
+</html>

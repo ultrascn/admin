@@ -1,0 +1,9 @@
+<div class="navigation" n:if="!empty($items) || ($showSignOutLink && $administration->hasSignOutLink())">
+	<div class="navigation__inner">
+		{foreach $items as $item}
+			{var $page = $item[page]}
+			<a href="{$linkGenerator->getUrl($page->getLink())}" n:class="navigation__item, $item[active] ? 'navigation__item--active'">{$page->getLabel()}</a>
+		{/foreach}
+		<a n:if="$showSignOutLink && $administration->hasSignOutLink()" href="{plink $administration->getSignOutLink()}" class="navigation__item">Odhlásit se</a>
+	</div>
+</div>

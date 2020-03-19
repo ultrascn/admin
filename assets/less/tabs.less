@@ -1,0 +1,44 @@
+
+@tabs-active-color: #00579C;
+@tabs-active-hover-color: lighten(#00579C, 10%);
+
+.tabs {
+	padding: 0;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	margin-bottom: 1em;
+}
+
+
+.tabs--subtabs {
+	font-size: 87.5%;
+}
+
+
+.tab {
+	padding: 0.5em 1em;
+	display: inline-block;
+	border-top: 3px solid transparent;
+	text-decoration: none;
+	#typro.anchors(#222, #222, #222);
+
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: #ddd;
+	}
+}
+
+
+.tab--active {
+	background: #fff;
+	border-top-color: @tabs-active-color;
+	font-weight: bold;
+	#typro.anchors(@tabs-active-color, @tabs-active-hover-color, @tabs-active-color);
+
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: @tabs-active-hover-color;
+	}
+}
