@@ -6,7 +6,7 @@
 	use Typro;
 
 
-	class FormFactory
+	class FormFactory implements \Inteve\Forms\IFormFactory
 	{
 		/**
 		 * @return Form
