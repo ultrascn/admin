@@ -27,6 +27,9 @@
 		"nette/tester": "^2.0"
 	},
 	"extra": {
-		"assets-files": "assets/"
+		"assets-files": "assets/",
+		"cleaner-ignore": [
+			"assets"
+		]
 	}
 }
