@@ -43,7 +43,7 @@
 		</div>
 
 		<div class="content">
-			{default $pageContentWide = FALSE}
+			{default $pageContentWide = $presenter->getAction() !== 'create' && $presenter->getAction() !== 'edit'}
 			<div n:class="content-primary, $pageContentWide ? content-primary--wide">
 				<div class="content-primary__inner">
 					<div n:if="!empty($flashes)" class="flash-messages">
