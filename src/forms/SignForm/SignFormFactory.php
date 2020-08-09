@@ -36,10 +36,12 @@
 		{
 			$form = $this->formFactory->create();
 			$form->addText('username', 'Uživatelské jméno')
-				->setRequired('Zadejte prosím svoje uživatelské jméno.');
+				->setRequired('Zadejte prosím svoje uživatelské jméno.')
+				->setHtmlAttribute('autocomplete', 'username');
 
 			$form->addPassword('password', 'Heslo')
-				->setRequired('Prosím zadejte svoje heslo.');
+				->setRequired('Prosím zadejte svoje heslo.')
+				->setHtmlAttribute('autocomplete', 'current-password');
 
 			$form->addSubmit('send', 'Přihlásit se');
 
