@@ -26,6 +26,10 @@
 		<link rel="{$assetFileRel}" type="text/css" href="{$assetsManager->getPath($assetFile->getPath(), $basePath)}">
 	{/foreach}
 
+	{foreach $assetsManager->getCriticalScripts($assetsManager->isProductionMode() ? 'production' : 'development') as $assetFile}
+		<script src="{$assetsManager->getPath($assetFile->getPath(), $basePath)}"></script>
+	{/foreach}
+
 	<link rel="shortcut icon" href="{$assetsManager->getPath('favicon.ico', $basePath)}">
 	{block head}{/block}
 </head>

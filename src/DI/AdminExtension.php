@@ -8,6 +8,9 @@
 
 	class AdminExtension extends Nette\DI\CompilerExtension
 	{
+		const ASSETS_FLAG_CRITICAL = 'critical';
+
+
 		private $defaults = [
 			'title' => 'Admin',
 			'homepagePresenter' => NULL,
@@ -44,7 +47,10 @@
 					$assetDefinition = [$assetDefinition];
 				}
 
-				$assetsManager->addSetup('addScript', $assetDefinition);
+				$flags = isset($assetDefinition[2]) ? ((array) $assetDefinition[2]) : [];
+				unset($assetDefinition[2]);
+
+				$assetsManager->addSetup(in_array(self::ASSETS_FLAG_CRITICAL, $flags, TRUE) ? 'addCriticalScript' : 'addScript', $assetDefinition);
 			}
 
 			foreach ($this->config['assets']['stylesheets'] as $assetDefinition) {
