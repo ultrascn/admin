@@ -12,7 +12,9 @@
 	<script n:if="!$assetsManager->isProductionMode()">
 	less = {
 		env: 'development',
-		relativeUrls: true
+		async: true,
+		relativeUrls: true,
+		useFileCache: false
 	};
 	</script>
 
