@@ -32,7 +32,7 @@
 		<script src="{$assetsManager->getPath($assetFile->getPath(), $basePath)}"></script>
 	{/foreach}
 
-	<link rel="shortcut icon" href="{$assetsManager->getPath('favicon.ico', $basePath)}">
+	<link n:if="$administration->hasFavicon()" rel="shortcut icon" href="{$assetsManager->getPath($administration->getFavicon(), $basePath)}">
 	{block head}{/block}
 </head>
 

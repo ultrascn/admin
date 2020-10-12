@@ -29,6 +29,9 @@
 		/** @var \Inteve\Navigation\Navigation|NULL */
 		private $navigation;
 
+		/** @var string|NULL */
+		private $favicon = 'favicon.ico';
+
 
 		/**
 		 * @param  string
@@ -102,5 +105,32 @@
 			}
 
 			return $this->navigation;
+		}
+
+
+		/**
+		 * @param string|NULL
+		 */
+		public function setFavicon($favicon)
+		{
+			$this->favicon = $favicon;
+		}
+
+
+		/**
+		 * @return bool
+		 */
+		public function hasFavicon()
+		{
+			return $this->favicon !== NULL;
+		}
+
+
+		/**
+		 * @return string|NULL
+		 */
+		public function getFavicon()
+		{
+			return $this->favicon;
 		}
 	}
