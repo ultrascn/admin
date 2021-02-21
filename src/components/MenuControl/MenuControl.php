@@ -15,13 +15,21 @@
 		/** @var Administration */
 		private $administration;
 
+		/** @var Navigation\Navigation */
+		private $navigation;
+
 		/** @var int */
 		private $type;
 
 
-		public function __construct(Administration $administration, $type)
+		public function __construct(
+			Administration $administration,
+			Navigation\Navigation $navigation,
+			$type
+		)
 		{
 			$this->administration = $administration;
+			$this->navigation = $navigation;
 			$this->type = $type;
 
 			if ($type !== self::TYPE_MAIN_MENU && $type !== self::TYPE_SUB_MENU) {
@@ -37,7 +45,7 @@
 		{
 			$items = [];
 			$subTreeLevel = $this->type === self::TYPE_MAIN_MENU ? 0 : 1;
-			$navigation = $this->administration->getNavigation();
+			$navigation = $this->navigation;
 			$usages = [];
 			// TODO: pro submenu musime podle aktualniho presenteru vybrat odpovidajici subtree
 

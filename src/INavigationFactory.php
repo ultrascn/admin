@@ -6,7 +6,8 @@
 	interface INavigationFactory
 	{
 		/**
+		 * @param  int|string|NULL $userId
 		 * @return \Inteve\Navigation\Navigation
 		 */
-		function create();
+		function create($userId);
 	}

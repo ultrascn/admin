@@ -14,6 +14,9 @@
 		/** @var Administration @inject */
 		public $administration;
 
+		/** @var \Inteve\Navigation\Navigation */
+		private $navigation;
+
 
 		public function formatLayoutTemplateFiles()
 		{
@@ -34,6 +37,10 @@
 
 		protected function getNavigation()
 		{
-			return $this->administration->getNavigation();
+			if ($this->navigation === NULL) {
+				$this->navigation = $this->administration->createNavigation($this->user->isLoggedIn() ? $this->user->id : NULL);
+			}
+
+			return $this->navigation;
 		}
 	}

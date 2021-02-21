@@ -26,9 +26,6 @@
 		/** @var INavigationFactory */
 		private $navigationFactory;
 
-		/** @var \Inteve\Navigation\Navigation|NULL */
-		private $navigation;
-
 		/** @var string|NULL */
 		private $favicon = 'favicon.ico';
 
@@ -96,15 +93,12 @@
 
 
 		/**
+		 * @param  int|string|NULL $userId
 		 * @return \Inteve\Navigation\Navigation
 		 */
-		public function getNavigation()
+		public function createNavigation($userId)
 		{
-			if ($this->navigation === NULL) {
-				$this->navigation = $this->navigationFactory->create();
-			}
-
-			return $this->navigation;
+			return $this->navigationFactory->create($userId);
 		}
 
 

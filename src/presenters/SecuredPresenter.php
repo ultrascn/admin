@@ -20,7 +20,7 @@
 
 		protected function createComponentBreadcrumbs()
 		{
-			$navigation = $this->administration->getNavigation();
+			$navigation = $this->getNavigation();
 
 			if ($navigation->getCurrentPage() === NULL) {
 				$currentPresenterName = $this->getName();
@@ -39,12 +39,12 @@
 
 		protected function createComponentNavigationMain()
 		{
-			return new MenuControl($this->administration, MenuControl::TYPE_MAIN_MENU);
+			return new MenuControl($this->administration, $this->getNavigation(), MenuControl::TYPE_MAIN_MENU);
 		}
 
 
 		protected function createComponentNavigationSub()
 		{
-			return new MenuControl($this->administration, MenuControl::TYPE_SUB_MENU);
+			return new MenuControl($this->administration, $this->getNavigation(), MenuControl::TYPE_SUB_MENU);
 		}
 	}
