@@ -3,14 +3,12 @@
 	namespace UltraScn\Admin\Forms;
 
 	use Nette;
-	use Nette\Application\UI\Form;
 	use Nette\Security\IAuthenticator;
-	use UltraScn\Admin\Model;
 
 
 	class SignFormFactory implements ISignFormFactory
 	{
-		/** @var Model\Authenticator */
+		/** @var IAuthenticator */
 		private $authenticator;
 
 		/** @var Nette\Security\User */
