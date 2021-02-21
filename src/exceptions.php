@@ -11,3 +11,8 @@
 	class InvalidArgumentException extends Exception
 	{
 	}
+
+
+	class StaticClassException extends Exception
+	{
+	}
