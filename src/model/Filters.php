@@ -20,7 +20,7 @@
 		 */
 		public static function date($date)
 		{
-			return Latte\Runtime\Filters::date($date, 'j.n.Y');
+			return (string) Latte\Runtime\Filters::date($date, 'j.n.Y');
 		}
 
 
@@ -30,6 +30,6 @@
 		 */
 		public static function datetime($date)
 		{
-			return Latte\Runtime\Filters::date($date, 'j.n.Y / H:i');
+			return (string) Latte\Runtime\Filters::date($date, 'j.n.Y / H:i');
 		}
 	}

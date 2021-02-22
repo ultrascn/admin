@@ -79,7 +79,10 @@
 				}
 			}
 
-			$currentPresenterName = $this->getPresenter()->getName();
+			$presenter = $this->getPresenter();
+			assert($presenter !== NULL);
+
+			$currentPresenterName = $presenter->getName();
 			$currentModuleName = $this->extractModuleName($currentPresenterName);
 
 			foreach ($items as &$item) {
@@ -97,7 +100,7 @@
 			$template->items = $items;
 			$template->showSignOutLink = $this->type === self::TYPE_MAIN_MENU;
 			$template->administration = $this->administration;
-			$template->linkGenerator = new Navigation\DefaultLinkGenerator($this->getPresenter(), $template->basePath);
+			$template->linkGenerator = new Navigation\DefaultLinkGenerator($presenter, $template->basePath);
 			assert($template instanceof \Nette\Bridges\ApplicationLatte\Template);
 			$template->render(__DIR__ . '/navigation.latte');
 		}
