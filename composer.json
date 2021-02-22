@@ -18,7 +18,8 @@
 		"nette/security": "^2.4",
 		"typro/bridge-nette-forms": "^1.0",
 		"typro/typro": "^3.3",
-		"inteve/forms": "^1.0"
+		"inteve/forms": "^1.0",
+		"inteve/datagrid": "^0.1.0"
 	},
 	"autoload": {
 		"classmap": ["src/"]

@@ -64,6 +64,9 @@
 			$builder->addDefinition($this->prefix('formFactory'))
 				->setFactory(\UltraScn\Admin\Forms\FormFactory::class);
 
+			$builder->addDefinition($this->prefix('gridFactory'))
+				->setFactory(\UltraScn\Admin\Components\GridFactory::class);
+
 			$builder->addDefinition($this->prefix('signFormFactory'))
 				->setFactory(\UltraScn\Admin\Forms\SignFormFactory::class);
 		}
