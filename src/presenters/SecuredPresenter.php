@@ -3,7 +3,8 @@
 	namespace UltraScn\Admin\Presenters;
 
 	use Inteve\Navigation\BreadcrumbsControl;
-	use UltraScn\Admin\Components\MenuControl;
+	use Inteve\Navigation\MenuControl;
+	use UltraScn\Admin\Components\MenuControlFactory;
 
 
 	abstract class SecuredPresenter extends BasePresenter
@@ -23,20 +24,7 @@
 		 */
 		protected function createComponentBreadcrumbs()
 		{
-			$navigation = $this->getNavigation();
-
-			if ($navigation->getCurrentPage() === NULL) {
-				$currentPresenterName = $this->getName();
-
-				foreach ($navigation->getPages() as $pageId => $page) {
-					if (MenuControl::extractPresenterName($page) === $currentPresenterName) {
-						$navigation->setCurrentPage($pageId);
-						break;
-					}
-				}
-			}
-
-			return new BreadcrumbsControl($navigation);
+			return new BreadcrumbsControl($this->getNavigation());
 		}
 
 
@@ -45,7 +33,8 @@
 		 */
 		protected function createComponentNavigationMain()
 		{
-			return new MenuControl($this->administration, $this->getNavigation(), MenuControl::TYPE_MAIN_MENU);
+			$menuControlFactory = new MenuControlFactory;
+			return $menuControlFactory->createMainMenu($this->administration, $this->getNavigation());
 		}
 
 
@@ -54,6 +43,7 @@
 		 */
 		protected function createComponentNavigationSub()
 		{
-			return new MenuControl($this->administration, $this->getNavigation(), MenuControl::TYPE_SUB_MENU);
+			$menuControlFactory = new MenuControlFactory;
+			return $menuControlFactory->createSubMenu($this->administration, $this->getNavigation());
 		}
 	}

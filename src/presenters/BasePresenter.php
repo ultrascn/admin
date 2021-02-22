@@ -46,6 +46,7 @@
 		{
 			if ($this->navigation === NULL) {
 				$this->navigation = $this->administration->createNavigation($this->user->isLoggedIn() ? $this->user->id : NULL);
+				Model\NavigationHelper::trySelectCurrentPage($this->navigation, $this->getName());
 			}
 
 			return $this->navigation;

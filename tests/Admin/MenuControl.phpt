@@ -3,7 +3,7 @@
 use Inteve\AssetsManager\AssetsManager;
 use UltraScn\Admin\Administration;
 use UltraScn\Admin\INavigationFactory;
-use UltraScn\Admin\Components\MenuControl;
+use UltraScn\Admin\Components\MenuControlFactory;
 use Inteve\Navigation\Navigation;
 use Tester\Assert;
 use UltraScn\Admin\Model\NavigationHelper;
@@ -45,9 +45,10 @@ function createAdministration()
 test(function () {
 	$administration = createAdministration();
 	$navigation = $administration->createNavigation(1);
+	$menuControlFactory = new MenuControlFactory;
 
 	$presenter = new MockPresenter;
-	$presenter['menu'] = new MenuControl($administration, $navigation, MenuControl::TYPE_MAIN_MENU);
+	$presenter['menu'] = $menuControlFactory->createMainMenu($administration, $navigation);
 
 	Assert::same(implode("\n", [
 		'<div class="navigation">',
@@ -77,22 +78,25 @@ test(function () {
 });
 
 
-// test(function () {
-// 	$administration = createAdministration();
-// 	$navigation = $administration->createNavigation(1);
+test(function () {
+	$administration = createAdministration();
+	$navigation = $administration->createNavigation(1);
+	$menuControlFactory = new MenuControlFactory;
 
-// 	$presenter = new MockPresenter;
-// 	$presenter['menu'] = new MenuControl($administration, $navigation, MenuControl::TYPE_SUB_MENU);
+	$presenter = new MockPresenter;
+	$presenter['menu'] = $menuControlFactory->createSubMenu($administration, $navigation);
 
-// 	Assert::same(implode("\n", [
-// 		'<div class="navigation">',
-// 		'	<div class="navigation__inner">',
-// 		'			<a href="#presenter=:Admin:Dashboard:" class="navigation__item">Dashboard</a>',
-// 		'			<a href="#presenter=:Admin:Products:" class="navigation__item">Eshop</a>',
-// 		'			<a href="#presenter=:Core:Settings:default" class="navigation__item">Settings</a>',
-// 		'		<a href="#presenter=:Admin:Sign:out" class="navigation__item">Odhlásit se</a>',
-// 		'	</div>',
-// 		'</div>',
-// 		'',
-// 	]), renderControl($presenter['menu']));
-// });
+	Assert::same('', renderControl($presenter['menu']));
+
+	NavigationHelper::trySelectCurrentPage($navigation, 'Admin:Orders');
+
+	Assert::same(implode("\n", [
+		'<div class="navigation">',
+		'	<div class="navigation__inner">',
+		'			<a href="#presenter=:Admin:Products:" class="navigation__item">Products</a>',
+		'			<a href="#presenter=:Admin:Orders:" class="navigation__item navigation__item--active">Orders</a>',
+		'	</div>',
+		'</div>',
+		'',
+	]), renderControl($presenter['menu']));
+});

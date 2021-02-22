@@ -14,7 +14,7 @@
 		"czproject/assert": "^1.3",
 		"inteve/application": "^1.0",
 		"inteve/assets-manager": "^0.3",
-		"inteve/navigation": "^3.0",
+		"inteve/navigation": "^3.1",
 		"nette/security": "^2.4",
 		"typro/bridge-nette-forms": "^1.0",
 		"typro/typro": "^3.3",
