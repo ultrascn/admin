@@ -4,6 +4,7 @@
 
 	use Inteve\Navigation;
 	use UltraScn\Admin\Administration;
+	use UltraScn\Admin\Model\NavigationHelper;
 
 
 	class MenuControl extends \Nette\Application\UI\Control
@@ -59,42 +60,17 @@
 				$pageLevel = substr_count($pageId, '/');
 
 				if ($subTreeLevel === $pageLevel) {
-					$presenterName = self::extractPresenterName($page);
-					$moduleName = $this->extractModuleName($presenterName);
-
-					if ($moduleName !== NULL) {
-						if (!isset($usages[$moduleName])) {
-							$usages[$moduleName] = 0;
-						}
-
-						$usages[$moduleName]++;
-					}
-
 					$items[] = [
 						'page' => $page,
-						'presenterName' => $presenterName,
-						'moduleName' => $moduleName,
-						'active' => FALSE,
+						'active' => $page->isHomepage()
+							? $this->navigation->isPageCurrent($pageId)
+							: $navigation->isPageActive($pageId),
 					];
 				}
 			}
 
 			$presenter = $this->getPresenter();
 			assert($presenter !== NULL);
-
-			$currentPresenterName = $presenter->getName();
-			$currentModuleName = $this->extractModuleName($currentPresenterName);
-
-			foreach ($items as &$item) {
-				$moduleName = $item['moduleName'];
-
-				if ($moduleName === NULL || $usages[$moduleName] > 1) {
-					$item['active'] = $currentPresenterName === $item['presenterName'];
-
-				} else {
-					$item['active'] = $currentModuleName === $moduleName;
-				}
-			}
 
 			$template = $this->createTemplate();
 			$template->items = $items;
@@ -103,42 +79,5 @@
 			$template->linkGenerator = new Navigation\DefaultLinkGenerator($presenter, $template->basePath);
 			assert($template instanceof \Nette\Bridges\ApplicationLatte\Template);
 			$template->render(__DIR__ . '/navigation.latte');
-		}
-
-
-		/**
-		 * @param  string|NULL $presenterName
-		 * @return string|NULL
-		 */
-		private function extractModuleName($presenterName)
-		{
-			if ($presenterName === NULL) {
-				return NULL;
-			}
-
-			$pos = strrpos($presenterName, ':');
-			return $pos !== FALSE ? substr($presenterName, 0, $pos) : NULL;
-		}
-
-
-		/**
-		 * @return string|NULL
-		 */
-		public static function extractPresenterName(Navigation\NavigationPage $item)
-		{
-			$link = $item->getLink();
-
-			if ($link === NULL || !($link instanceof Navigation\NetteLink)) {
-				return NULL;
-			}
-
-			$destination = ltrim($link->getDestination(), ':');
-			$pos = strrpos($destination, ':');
-
-			if ($pos === FALSE) { // 'this' or action name
-				return NULL;
-			}
-
-			return substr($destination, 0, $pos);
 		}
 	}

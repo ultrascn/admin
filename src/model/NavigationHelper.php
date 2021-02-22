@@ -118,7 +118,7 @@
 		 * @param  string|NULL $presenterName
 		 * @return string|NULL
 		 */
-		private static function extractModuleName($presenterName)
+		public static function extractModuleName($presenterName)
 		{
 			if ($presenterName === NULL) {
 				return NULL;
