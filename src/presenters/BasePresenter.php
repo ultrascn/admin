@@ -29,6 +29,7 @@
 		protected function beforeRender()
 		{
 			parent::beforeRender();
+			assert($this->template instanceof Nette\Bridges\ApplicationLatte\Template);
 			$this->template->addFilter('date', [Model\Filters::class, 'date']);
 			$this->template->addFilter('datetime', [Model\Filters::class, 'datetime']);
 			$this->template->administration = $this->administration;

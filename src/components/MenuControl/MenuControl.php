@@ -96,12 +96,13 @@
 			$template->showSignOutLink = $this->type === self::TYPE_MAIN_MENU;
 			$template->administration = $this->administration;
 			$template->linkGenerator = new Navigation\DefaultLinkGenerator($this->getPresenter(), $template->basePath);
+			assert($template instanceof \Nette\Bridges\ApplicationLatte\Template);
 			$template->render(__DIR__ . '/navigation.latte');
 		}
 
 
 		/**
-		 * @param  string|NULL
+		 * @param  string|NULL $presenterName
 		 * @return string|NULL
 		 */
 		private function extractModuleName($presenterName)

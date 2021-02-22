@@ -31,7 +31,10 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $title
+		 * @param  string $homepagePresenter
+		 * @param  string $signPresenter
+		 * @param  string|NULL $signOutLink
 		 */
 		public function __construct(
 			$title,
@@ -103,7 +106,7 @@
 
 
 		/**
-		 * @param string|NULL
+		 * @param string|NULL $favicon
 		 */
 		public function setFavicon($favicon)
 		{
