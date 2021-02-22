@@ -30,6 +30,7 @@
 		 */
 		public function renderIn()
 		{
+			assert($this->template instanceof \Nette\Bridges\ApplicationLatte\Template);
 			$this->template->setFile(__DIR__ . '/templates/Sign/in.latte');
 		}
 
