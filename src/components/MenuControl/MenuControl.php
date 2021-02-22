@@ -124,7 +124,7 @@
 		/**
 		 * @return string|NULL
 		 */
-		public static function extractPresenterName(Navigation\NavigationItem $item)
+		public static function extractPresenterName(Navigation\NavigationPage $item)
 		{
 			$link = $item->getLink();
 
