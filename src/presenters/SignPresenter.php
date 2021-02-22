@@ -14,6 +14,9 @@
 		public $signFormFactory;
 
 
+		/**
+		 * @return void
+		 */
 		public function actionIn()
 		{
 			if ($this->getUser()->isLoggedIn()) {
@@ -22,12 +25,18 @@
 		}
 
 
+		/**
+		 * @return void
+		 */
 		public function renderIn()
 		{
 			$this->template->setFile(__DIR__ . '/templates/Sign/in.latte');
 		}
 
 
+		/**
+		 * @return void
+		 */
 		public function actionOut()
 		{
 			$this->user->logout(TRUE);
@@ -36,6 +45,9 @@
 		}
 
 
+		/**
+		 * @return \Nette\Forms\Form
+		 */
 		protected function createComponentSignForm()
 		{
 			$form = $this->signFormFactory->create(function () {

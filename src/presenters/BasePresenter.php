@@ -18,6 +18,9 @@
 		private $navigation;
 
 
+		/**
+		 * @return string[]
+		 */
 		public function formatLayoutTemplateFiles()
 		{
 			return [
@@ -36,6 +39,9 @@
 		}
 
 
+		/**
+		 * @return \Inteve\Navigation\Navigation
+		 */
 		protected function getNavigation()
 		{
 			if ($this->navigation === NULL) {

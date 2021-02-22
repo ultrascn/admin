@@ -3,7 +3,6 @@
 	namespace UltraScn\Admin\DI;
 
 	use Nette;
-	use Nette\DI\Statement;
 
 
 	class AdminExtension extends Nette\DI\CompilerExtension
@@ -11,6 +10,7 @@
 		const ASSETS_FLAG_CRITICAL = 'critical';
 
 
+		/** @var array<string, mixed> */
 		private $defaults = [
 			'title' => 'Admin',
 			'homepagePresenter' => NULL,

@@ -3,7 +3,6 @@
 	namespace UltraScn\Admin\Components;
 
 	use Inteve\Navigation;
-	use Nette\Utils\Strings;
 	use UltraScn\Admin\Administration;
 
 
@@ -22,6 +21,9 @@
 		private $type;
 
 
+		/**
+		 * @param int $type
+		 */
 		public function __construct(
 			Administration $administration,
 			Navigation\Navigation $navigation,

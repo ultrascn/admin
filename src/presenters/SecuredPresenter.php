@@ -18,6 +18,9 @@
 		}
 
 
+		/**
+		 * @return BreadcrumbsControl
+		 */
 		protected function createComponentBreadcrumbs()
 		{
 			$navigation = $this->getNavigation();
@@ -37,12 +40,18 @@
 		}
 
 
+		/**
+		 * @return MenuControl
+		 */
 		protected function createComponentNavigationMain()
 		{
 			return new MenuControl($this->administration, $this->getNavigation(), MenuControl::TYPE_MAIN_MENU);
 		}
 
 
+		/**
+		 * @return MenuControl
+		 */
 		protected function createComponentNavigationSub()
 		{
 			return new MenuControl($this->administration, $this->getNavigation(), MenuControl::TYPE_SUB_MENU);

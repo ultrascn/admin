@@ -59,36 +59,54 @@
 		}
 
 
+		/**
+		 * @return string
+		 */
 		public function getTitle()
 		{
 			return $this->title;
 		}
 
 
+		/**
+		 * @return string
+		 */
 		public function getHomepagePresenter()
 		{
 			return $this->homepagePresenter;
 		}
 
 
+		/**
+		 * @return string
+		 */
 		public function getSignPresenter()
 		{
 			return $this->signPresenter;
 		}
 
 
+		/**
+		 * @return string|NULL
+		 */
 		public function getSignOutLink()
 		{
 			return $this->signOutLink;
 		}
 
 
+		/**
+		 * @return bool
+		 */
 		public function hasSignOutLink()
 		{
 			return $this->signOutLink !== NULL;
 		}
 
 
+		/**
+		 * @return AssetsManager
+		 */
 		public function getAssetsManager()
 		{
 			return $this->assetsManager;
@@ -107,6 +125,7 @@
 
 		/**
 		 * @param string|NULL $favicon
+		 * @return void
 		 */
 		public function setFavicon($favicon)
 		{
