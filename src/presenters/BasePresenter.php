@@ -29,8 +29,8 @@
 		protected function beforeRender()
 		{
 			parent::beforeRender();
-			$this->template->addFilter('date', array(Model\Filters::class, 'date'));
-			$this->template->addFilter('datetime', array(Model\Filters::class, 'datetime'));
+			$this->template->addFilter('date', [Model\Filters::class, 'date']);
+			$this->template->addFilter('datetime', [Model\Filters::class, 'datetime']);
 			$this->template->administration = $this->administration;
 		}
 
