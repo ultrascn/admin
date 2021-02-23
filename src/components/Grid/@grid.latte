@@ -1,6 +1,6 @@
 {*
  * @var \Inteve\DataGrid\DataGrid $grid
- * @var \Nette\Utils\Paginator  $paginator
+ * @var \Nette\Utils\Paginator|NULL  $paginator
  * @var array  $rows
  * @var \Inteve\DataGrid\IColumn[]  $columns
  * @var \Inteve\DataGrid\IFilter[]  $filters
@@ -100,5 +100,7 @@
 		</form>
 	</div>
 
-	{include @paginator.latte, paginator => $paginator}
+	{if $paginator !== NULL}
+		{include @paginator.latte, paginator => $paginator}
+	{/if}
 {/if}
