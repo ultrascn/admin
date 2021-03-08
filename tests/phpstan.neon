@@ -3,3 +3,6 @@ parameters:
 
 	paths:
 		- ../src
+
+	ignoreErrors:
+		- '#Nette\\Application\\Routers\\RouteList does not accept Nette\\Application\\Routers\\Route\.#'
