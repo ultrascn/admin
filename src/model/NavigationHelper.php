@@ -29,6 +29,8 @@
 
 			$items = [];
 			$usages = [];
+			$moduleToPage = [];
+			$presenterToPage = [];
 
 			foreach ($navigation->getPages() as $pageId => $page) {
 				if (!$page->hasLink()) {
@@ -44,6 +46,14 @@
 					}
 
 					$usages[$moduleName]++;
+
+					if (!isset($moduleToPage[$moduleName]) || $moduleToPage[$moduleName]->getLevel() < $page->getLevel()) {
+						$moduleToPage[$moduleName] = $page;
+					}
+				}
+
+				if (!isset($presenterToPage[$presenterName]) || $presenterToPage[$presenterName]->getLevel() < $page->getLevel()) {
+					$presenterToPage[$presenterName] = $page;
 				}
 
 				$items[] = [
@@ -54,40 +64,15 @@
 				];
 			}
 
-			$currentModuleName = self::extractModuleName($currentPresenterName);
-			$candidate = NULL;
-			$candidateLevel = NULL;
+			if (isset($presenterToPage[$currentPresenterName])) { // exact match
+				$navigation->setCurrentPage($presenterToPage[$currentPresenterName]->getId());
 
-			foreach ($items as $item) {
-				$moduleName = $item['moduleName'];
-				$matched = FALSE;
+			} else {
+				$currentModuleName = self::extractModuleName($currentPresenterName);
 
-				if ($moduleName === NULL || $usages[$moduleName] > 1) {
-					$matched = $currentPresenterName === $item['presenterName'];
-
-				} else {
-					$matched = $currentModuleName === $moduleName;
+				if ($currentModuleName !== NULL && isset($moduleToPage[$currentModuleName])) {
+					$navigation->setCurrentPage($moduleToPage[$currentModuleName]->getId());
 				}
-
-				if ($matched) {
-					if ($candidate === NULL) {
-						$candidate = $item['pageId'];
-						$candidateLevel = Navigation\Helpers::getPageLevel($candidate);
-
-					} else { /** @phpstan-ignore-line */
-						$myLevel = Navigation\Helpers::getPageLevel($item['pageId']);
-
-						if ($myLevel > $candidateLevel) {
-							$candidate = $item['pageId'];
-							$candidateLevel = $myLevel;
-						}
-					}
-					break;
-				}
-			}
-
-			if ($candidate !== NULL) {
-				$navigation->setCurrentPage($candidate);
 			}
 		}
 

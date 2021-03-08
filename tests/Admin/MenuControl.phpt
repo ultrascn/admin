@@ -49,6 +49,7 @@ test(function () {
 
 	$presenter = new MockPresenter;
 	$presenter['menu'] = $menuControlFactory->createMainMenu($administration, $navigation);
+	$navigation->setCurrentPage(NULL);
 
 	Assert::same(implode("\n", [
 		'<div class="navigation">',
@@ -62,6 +63,7 @@ test(function () {
 		'',
 	]), renderControl($presenter['menu']));
 
+	$navigation->setCurrentPage(NULL);
 	NavigationHelper::trySelectCurrentPage($navigation, 'Admin:Orders');
 
 	Assert::same(implode("\n", [
@@ -85,9 +87,11 @@ test(function () {
 
 	$presenter = new MockPresenter;
 	$presenter['menu'] = $menuControlFactory->createSubMenu($administration, $navigation);
+	$navigation->setCurrentPage(NULL);
 
 	Assert::same('', renderControl($presenter['menu']));
 
+	$navigation->setCurrentPage(NULL);
 	NavigationHelper::trySelectCurrentPage($navigation, 'Admin:Orders');
 
 	Assert::same(implode("\n", [
