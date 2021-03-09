@@ -50,6 +50,21 @@
 
 
 		/**
+		 * @param  string $name
+		 * @param  string $presenter
+		 * @return void
+		 */
+		public function addPackage($name, $presenter)
+		{
+			if (isset($this->packages[$name])) {
+				throw new InvalidArgumentException("Package '$name' already exists.");
+			}
+
+			$this->packages[$name] = $presenter;
+		}
+
+
+		/**
 		 * @return Nette\Application\IRouter
 		 */
 		public function createRouter()
