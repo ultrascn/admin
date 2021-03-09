@@ -23,7 +23,7 @@
 			],
 			'router' => [
 				'prefix' => NULL,
-				'packages' => NULL,
+				'packages' => [],
 				'defaultPackage' => NULL,
 				'appPresenter' => NULL,
 			],
