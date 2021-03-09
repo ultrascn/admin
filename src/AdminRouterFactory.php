@@ -134,7 +134,7 @@
 									$params['package'] = $packageName;
 									$params['presenter'] = $presenter;
 
-									if (isset($params['action']) && $params['action'] === $action) {
+									if (isset($params['action']) && $params['action'] === $action && !isset($params['id'])) {
 										unset($params['presenter']);
 										unset($params['action']);
 									}
@@ -156,7 +156,7 @@
 									$params['package'] = $packageName;
 									$params['presenter'] = Strings::substring($params['presenter'], Strings::length($module . $separator));
 
-									if (isset($params['action']) && $params['action'] === $action) {
+									if (isset($params['action']) && $params['action'] === $action && !isset($params['id'])) {
 										unset($params['action']);
 									}
 

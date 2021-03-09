@@ -58,10 +58,22 @@ test(function () use ($route) {
 		'action' => 'edit',
 	], '/admin/users/user/edit/10');
 
+	testRouteIn($route, '/admin/users/user/default/1?do=delete', 'CmsUsers:Admin:User', [
+		'id' => '1',
+		'action' => 'default',
+		'do' => 'delete'
+	], '/admin/users/user/default/1?do=delete');
+
 	testRouteIn($route, '/admin/users/user-role/', 'CmsUsers:Admin:UserRole', [
 		'id' => NULL,
 		'action' => 'default',
 	], '/admin/users/user-role/');
+
+	testRouteIn($route, '/admin/users/user-role/default/1?do=delete', 'CmsUsers:Admin:UserRole', [
+		'id' => '1',
+		'action' => 'default',
+		'do' => 'delete',
+	], '/admin/users/user-role/default/1?do=delete');
 });
 
 
