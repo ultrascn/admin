@@ -64,7 +64,7 @@
 						$params['id'] = $params['id'] !== '' ? $params['id'] : NULL;
 
 						if ($params['package'] === NULL) {
-							if ($this->defaultPackage === NULL) {
+							if ($this->defaultPackage === NULL || !isset($this->packages[$this->defaultPackage])) {
 								return NULL;
 							}
 
