@@ -23,7 +23,7 @@ UltraSCN\Admin requires PHP 5.6.0 or later.
 
 **Edit `config.neon`**
 
-```
+```neon
 extensions:
 	admin: UltraScn\Admin\DI\AdminExtension
 
