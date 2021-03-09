@@ -40,6 +40,14 @@ admin:
 		stylesheets:
 			- ['path/to/ultrascn/admin/styles.css', 'production']
 			- ['path/to/ultrascn/admin/styles.less', 'development']
+	router:
+		prefix: admin
+		packages:
+			dashboard: CmsDashboard:Dashboard:
+			orders: CmsOrders:Order:list
+			users: CmsUsers:User:
+		defaultPackage: dashboard
+		appPresenter: MyApp:Admin:Invoice:
 ```
 
 **Create NavigationFactory for main menu and register it in config.neon**

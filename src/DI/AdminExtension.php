@@ -21,6 +21,12 @@
 				'scripts' => [],
 				'stylesheets' => [],
 			],
+			'router' => [
+				'prefix' => NULL,
+				'packages' => NULL,
+				'defaultPackage' => NULL,
+				'appPresenter' => NULL,
+			],
 		];
 
 
@@ -69,5 +75,15 @@
 
 			$builder->addDefinition($this->prefix('signFormFactory'))
 				->setFactory(\UltraScn\Admin\Forms\SignFormFactory::class);
+
+			if (is_array($this->config['router']) && isset($this->config['router']['prefix'])) {
+				$builder->addDefinition($this->prefix('routerFactory'))
+					->setFactory(\UltraScn\Admin\AdminRouterFactory::class, [
+						$this->config['router']['prefix'],
+						$this->config['router']['packages'],
+						$this->config['router']['defaultPackage'],
+						$this->config['router']['appPresenter'],
+					]);
+			}
 		}
 	}
