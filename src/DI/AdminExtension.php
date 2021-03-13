@@ -35,18 +35,11 @@
 			$this->validateConfig($this->defaults);
 			$builder = $this->getContainerBuilder();
 
-			$builder->addDefinition($this->prefix('administration'))
-				->setFactory(\UltraScn\Admin\Administration::class, [
-					'title' => $this->config['title'],
-					'homepagePresenter' => $this->config['homepagePresenter'],
-					'signPresenter' => $this->config['signPresenter'],
-					'signOutLink' => $this->config['signOutLink'],
-				]);
-
 			$assetsManager = $builder->addDefinition($this->prefix('assetsManager'))
 				->setFactory(\Inteve\AssetsManager\AssetsManager::class, [
 					'productionMode' => $this->config['assets']['productionMode'],
-				]);
+				])
+				->setAutowired(FALSE);
 
 			foreach ($this->config['assets']['scripts'] as $assetDefinition) {
 				if (is_string($assetDefinition)) {
@@ -66,6 +59,15 @@
 
 				$assetsManager->addSetup('addStylesheet', $assetDefinition);
 			}
+
+			$builder->addDefinition($this->prefix('administration'))
+				->setFactory(\UltraScn\Admin\Administration::class, [
+					'title' => $this->config['title'],
+					'homepagePresenter' => $this->config['homepagePresenter'],
+					'signPresenter' => $this->config['signPresenter'],
+					'signOutLink' => $this->config['signOutLink'],
+					'assetsManager' => $assetsManager,
+				]);
 
 			$builder->addDefinition($this->prefix('formFactory'))
 				->setFactory(\UltraScn\Admin\Forms\FormFactory::class);
