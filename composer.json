@@ -19,7 +19,7 @@
 		"typro/bridge-nette-forms": "^1.0",
 		"typro/typro": "^3.3",
 		"inteve/forms": "^1.0",
-		"inteve/datagrid": "^0.3.0"
+		"inteve/datagrid": "^0.4"
 	},
 	"autoload": {
 		"classmap": ["src/"]
