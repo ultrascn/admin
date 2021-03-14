@@ -55,3 +55,20 @@ function testRouteIn(
 		Tester\Assert::null($expectedPresenter);
 	}
 }
+
+
+function prepareTempDir()
+{
+	static $dirs = [];
+
+	@mkdir(__DIR__ . '/temp/');  # @ - directory may already exist
+
+	$tempDir = __DIR__ . '/temp/' . getmypid();
+
+	if (!isset($dirs[$tempDir])) {
+		Tester\Helpers::purge($tempDir);
+		$dirs[$tempDir] = TRUE;
+	}
+
+	return $tempDir;
+}

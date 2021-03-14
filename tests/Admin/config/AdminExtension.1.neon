@@ -1,0 +1,34 @@
+extensions:
+	admin: UltraScn\Admin\DI\AdminExtension
+
+application:
+	scanDirs: false
+
+security:
+	users:
+		root: pass
+
+admin:
+	title: 'MyAdmin'
+	homepagePresenter: 'My:Homepage:'
+	signPresenter: 'My:Sign:in'
+	signOutLink: 'My:Sign:out'
+	assets:
+		productionMode: false
+		scripts:
+			- path/to/netteForms.js
+			- ['path/to/less.js', 'development', 'critical']
+		stylesheets:
+			- ['path/to/ultrascn/admin/styles.css', 'production']
+			- ['path/to/ultrascn/admin/styles.less', 'development']
+	router:
+		prefix: admin
+		packages:
+			dashboard: 'CmsDashboard:Dashboard:'
+			orders: 'CmsOrders:Order:list'
+			users: 'CmsUsers:User:'
+		defaultPackage: dashboard
+		appPresenter: 'MyApp:Admin:Invoice:'
+
+services:
+	- MyNavigationFactory
