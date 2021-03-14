@@ -8,29 +8,8 @@
 	<title>{ifset title}{include title|stripHtml|trim} | {/ifset}{$administration->getTitle()}</title>
 
 	{var $assetsManager = $administration->getAssetsManager()}
-
-	<script n:if="!$assetsManager->isProductionMode()">
-	less = {
-		env: 'development',
-		async: true,
-		relativeUrls: true,
-		useFileCache: false
-	};
-	</script>
-
-	{foreach $assetsManager->getStylesheets($assetsManager->isProductionMode() ? 'production' : 'development') as $assetFile}
-		{var $assetFileRel = 'stylesheet'}
-
-		{if $assetFile->isOfType('less')}
-			{var $assetFileRel = 'stylesheet/less'}
-		{/if}
-
-		<link rel="{$assetFileRel}" type="text/css" href="{$assetsManager->getPath($assetFile->getPath(), $basePath)}">
-	{/foreach}
-
-	{foreach $assetsManager->getCriticalScripts($assetsManager->isProductionMode() ? 'production' : 'development') as $assetFile}
-		<script src="{$assetsManager->getPath($assetFile->getPath(), $basePath)}"></script>
-	{/foreach}
+	{foreach $assetsManager->getStylesheetsTags($assetsManager->getDefaultEnvironment()) as $assetTag}{$assetTag}{/foreach}
+	{foreach $assetsManager->getCriticalScriptsTags($assetsManager->getDefaultEnvironment()) as $assetTag}{$assetTag}{/foreach}
 
 	<link n:if="$administration->hasFavicon()" rel="shortcut icon" href="{$assetsManager->getPath($administration->getFavicon(), $basePath)}">
 	{block head}{/block}
@@ -81,9 +60,7 @@
 	</div>
 
 	{block scripts}
-	{foreach $assetsManager->getScripts($assetsManager->isProductionMode() ? 'production' : 'development') as $assetFile}
-		<script src="{$assetsManager->getPath($assetFile->getPath(), $basePath)}"></script>
-	{/foreach}
+	{foreach $assetsManager->getScriptsTags($assetsManager->getDefaultEnvironment()) as $assetTag}{$assetTag}{/foreach}
 	{/block}
 </body>
 </html>

@@ -17,9 +17,11 @@
 			'signPresenter' => NULL,
 			'signOutLink' => NULL,
 			'assets' => [
-				'productionMode' => FALSE,
+				'publicBasePath' => '',
+				'defaultEnvironment' => NULL,
 				'scripts' => [],
 				'stylesheets' => [],
+				'bundles' => [],
 			],
 			'router' => [
 				'prefix' => NULL,
@@ -37,7 +39,8 @@
 
 			$assetsManager = $builder->addDefinition($this->prefix('assetsManager'))
 				->setFactory(\Inteve\AssetsManager\AssetsManager::class, [
-					'productionMode' => $this->config['assets']['productionMode'],
+					'publicBasePath' => $this->config['assets']['publicBasePath'],
+					'defaultEnvironment' => $this->config['assets']['defaultEnvironment'],
 				])
 				->setAutowired(FALSE);
 
@@ -58,6 +61,10 @@
 				}
 
 				$assetsManager->addSetup('addStylesheet', $assetDefinition);
+			}
+
+			foreach ($this->config['assets']['bundles'] as $bundleName) {
+				$assetsManager->addSetup('requireBundle', [$bundleName]);
 			}
 
 			$builder->addDefinition($this->prefix('administration'))

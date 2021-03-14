@@ -36,7 +36,7 @@ function createAdministration()
 		'Admin:Dashboard:',
 		'Admin:Sign:in',
 		'Admin:Sign:out',
-		new AssetsManager(TRUE),
+		new AssetsManager('', 'production'),
 		new NavigationFactory
 	);
 }
