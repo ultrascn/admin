@@ -33,21 +33,24 @@ admin:
 	signPresenter: 'Admin:Sign:in'
 	signOutLink: 'Admin:Sign:out'
 	assets:
-		productionMode: false
+		publicBasePath: '/'
+		defaultEnvironment: 'production'
 		scripts:
 			- path/to/netteForms.js
 			- ['path/to/less.js', 'development', 'critical']
 		stylesheets:
 			- ['path/to/ultrascn/admin/styles.css', 'production']
 			- ['path/to/ultrascn/admin/styles.less', 'development']
+		bundles:
+			- nette/forms
 	router:
 		prefix: admin
 		packages:
-			dashboard: CmsDashboard:Dashboard:
-			orders: CmsOrders:Order:list
-			users: CmsUsers:User:
+			dashboard: 'CmsDashboard:Dashboard:'
+			orders: 'CmsOrders:Order:list'
+			users: 'CmsUsers:User:'
 		defaultPackage: dashboard
-		appPresenter: MyApp:Admin:Invoice:
+		appPresenter: 'MyApp:Admin:Invoice:'
 ```
 
 **Create NavigationFactory for main menu and register it in config.neon**
