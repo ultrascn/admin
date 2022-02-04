@@ -15,7 +15,7 @@ jobs:
 
             - run: composer install --no-interaction --prefer-dist
             - run: mkdir -p temp/phpstan
-            - run: composer require --dev phpstan/phpstan ^0.12 -d temp/phpstan --no-progress
+            - run: composer require --dev phpstan/phpstan ^1.0 -d temp/phpstan --no-progress
             - run: composer require --dev phpstan/extension-installer -d temp/phpstan
             - run: composer require --dev phpstan/phpstan-nette -d temp/phpstan
             - run: temp/phpstan/vendor/bin/phpstan analyse --configuration tests/phpstan.neon

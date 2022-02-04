@@ -45,7 +45,9 @@
 		protected function getNavigation()
 		{
 			if ($this->navigation === NULL) {
-				$this->navigation = $this->administration->createNavigation($this->user->isLoggedIn() ? $this->user->id : NULL);
+				$userId = $this->user->isLoggedIn() ? $this->user->id : NULL;
+				assert($userId === NULL || is_int($userId) || is_string($userId));
+				$this->navigation = $this->administration->createNavigation($userId);
 				Model\NavigationHelper::trySelectCurrentPage($this->navigation, $this->getName());
 			}
 
