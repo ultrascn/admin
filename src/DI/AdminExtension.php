@@ -18,7 +18,7 @@
 			'signOutLink' => NULL,
 			'assets' => [
 				'publicBasePath' => '',
-				'defaultEnvironment' => NULL,
+				'environment' => NULL,
 				'scripts' => [],
 				'stylesheets' => [],
 				'bundles' => [],
@@ -39,8 +39,8 @@
 
 			$assetsManager = $builder->addDefinition($this->prefix('assetsManager'))
 				->setFactory(\Inteve\AssetsManager\AssetsManager::class, [
+					'environment' => $this->config['assets']['environment'],
 					'publicBasePath' => $this->config['assets']['publicBasePath'],
-					'defaultEnvironment' => $this->config['assets']['defaultEnvironment'],
 				])
 				->setAutowired(FALSE);
 

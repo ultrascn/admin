@@ -67,14 +67,14 @@ test(function () {
 
 	Assert::same([
 		'path/to/ultrascn/admin/styles.less',
-	], extractPaths($assetsManager->getStylesheets('development')));
+	], extractPaths($assetsManager->getStylesheets()));
 
 	Assert::same([
 		'path/to/netteForms.js',
-	], extractPaths($assetsManager->getScripts('development')));
+	], extractPaths($assetsManager->getScripts()));
 
 	Assert::same([
 		'path/to/less.js',
-	], extractPaths($assetsManager->getCriticalScripts('development')));
+	], extractPaths($assetsManager->getCriticalScripts()));
 
 });

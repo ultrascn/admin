@@ -14,7 +14,7 @@ admin:
 	signPresenter: 'My:Sign:in'
 	signOutLink: 'My:Sign:out'
 	assets:
-		productionMode: false
+		environment: development
 		scripts:
 			- path/to/netteForms.js
 			- ['path/to/less.js', 'development', 'critical']
