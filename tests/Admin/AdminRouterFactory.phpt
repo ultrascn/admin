@@ -39,6 +39,11 @@ test(function () use ($route) {
 		'action' => 'default',
 	], '/admin/sign/');
 
+	testRouteIn($route, '/admin/sign/in/', 'App:Admin:Sign', [
+		'id' => NULL,
+		'action' => 'in',
+	], '/admin/sign/in/');
+
 	testRouteIn($route, '/admin/sign/out/', 'App:Admin:Sign', [
 		'id' => NULL,
 		'action' => 'out',

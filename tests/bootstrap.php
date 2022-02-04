@@ -57,6 +57,27 @@ function testRouteIn(
 }
 
 
+/**
+ * @param  string $url
+ * @param  string|NULL $expectedPresenterName
+ */
+function testRouteOut(
+	Nette\Application\IRouter $route,
+	$presenter,
+	array $parameters = [],
+	$expectedUrl
+)
+{
+	$refUrl = new Nette\Http\UrlScript("http://example.com");
+	$refUrl->setScriptPath('/');
+
+	$appRequest = new \Nette\Application\Request($presenter, NULL, $parameters);
+	$url = $route->constructUrl($appRequest, $refUrl);
+	$url = strncmp($url, 'http://example.com', 18) ? $url : substr($url, 18);
+	Tester\Assert::same($expectedUrl, $url);
+}
+
+
 function prepareTempDir()
 {
 	static $dirs = [];
