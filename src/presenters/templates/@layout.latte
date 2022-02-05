@@ -8,8 +8,8 @@
 	<title>{ifset title}{include title|stripHtml|trim} | {/ifset}{$administration->getTitle()}</title>
 
 	{var $assetsManager = $administration->getAssetsManager()}
-	{foreach $assetsManager->getStylesheetsTags($assetsManager->getDefaultEnvironment()) as $assetTag}{$assetTag}{/foreach}
-	{foreach $assetsManager->getCriticalScriptsTags($assetsManager->getDefaultEnvironment()) as $assetTag}{$assetTag}{/foreach}
+	{foreach $assetsManager->getStylesheetsTags() as $assetTag}{$assetTag}{/foreach}
+	{foreach $assetsManager->getCriticalScriptsTags() as $assetTag}{$assetTag}{/foreach}
 
 	<link n:if="$administration->hasFavicon()" rel="shortcut icon" href="{$assetsManager->getPath($administration->getFavicon(), $basePath)}">
 	{block head}{/block}
@@ -60,7 +60,7 @@
 	</div>
 
 	{block scripts}
-	{foreach $assetsManager->getScriptsTags($assetsManager->getDefaultEnvironment()) as $assetTag}{$assetTag}{/foreach}
+	{foreach $assetsManager->getScriptsTags() as $assetTag}{$assetTag}{/foreach}
 	{/block}
 </body>
 </html>
