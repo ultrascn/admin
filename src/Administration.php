@@ -29,12 +29,16 @@
 		/** @var string|NULL */
 		private $favicon = 'favicon.ico';
 
+		/** @var string|NULL */
+		private $layoutFooterTemplate;
+
 
 		/**
 		 * @param  string $title
 		 * @param  string $homepagePresenter
 		 * @param  string $signPresenter
 		 * @param  string|NULL $signOutLink
+		 * @param  string|NULL $layoutFooterTemplate
 		 */
 		public function __construct(
 			$title,
@@ -42,7 +46,8 @@
 			$signPresenter,
 			$signOutLink,
 			AssetsManager $assetsManager,
-			INavigationFactory $navigationFactory
+			INavigationFactory $navigationFactory,
+			$layoutFooterTemplate = NULL
 		)
 		{
 			Assert::string($title);
@@ -56,6 +61,7 @@
 			$this->signOutLink = $signOutLink !== NULL ? ':' . ltrim($signOutLink, ':') : NULL;
 			$this->assetsManager = $assetsManager;
 			$this->navigationFactory = $navigationFactory;
+			$this->layoutFooterTemplate = $layoutFooterTemplate;
 		}
 
 
@@ -148,5 +154,23 @@
 		public function getFavicon()
 		{
 			return $this->favicon;
+		}
+
+
+		/**
+		 * @return bool
+		 */
+		public function hasLayoutFooterTemplate()
+		{
+			return $this->layoutFooterTemplate !== NULL;
+		}
+
+
+		/**
+		 * @return string|NULL
+		 */
+		public function getLayoutFooterTemplate()
+		{
+			return $this->layoutFooterTemplate;
 		}
 	}
