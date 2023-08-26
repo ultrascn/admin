@@ -110,6 +110,7 @@
 			}
 
 			$pos = strrpos($presenterName, ':');
-			return $pos !== FALSE ? substr($presenterName, 0, $pos) : NULL;
+			$result = $pos !== FALSE ? substr($presenterName, 0, $pos) : NULL;
+			return is_string($result) ? $result : NULL;
 		}
 	}
