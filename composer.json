@@ -36,6 +36,9 @@
 		"assets-files": "assets/",
 		"cleaner-ignore": [
 			"assets"
+		],
+		"phpstan-extensions": [
+			"phpstan/phpstan-nette"
 		]
 	}
 }
