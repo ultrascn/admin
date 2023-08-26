@@ -18,6 +18,7 @@
 		"inteve/application": "^1.0",
 		"inteve/assets-manager": "^0.5",
 		"inteve/navigation": "^3.1",
+		"latte/latte": "^2.4",
 		"nette/security": "^2.4",
 		"typro/bridge-nette-forms": "^1.0",
 		"typro/typro": "^3.3",
