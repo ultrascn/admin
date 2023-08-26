@@ -83,7 +83,7 @@ function testRouteIn(
 function testRouteOut(
 	Nette\Application\IRouter $route,
 	$presenter,
-	array $parameters = [],
+	array $parameters,
 	$expectedUrl
 )
 {
