@@ -1,7 +1,10 @@
 
 # UltraSCN\Admin
 
-[![Tests Status](https://github.com/ultrascn/admin/workflows/Tests/badge.svg)](https://github.com/ultrascn/admin/actions)
+[![Build Status](https://github.com/ultrascn/admin/workflows/Build/badge.svg)](https://github.com/ultrascn/admin/actions)
+[![Downloads this Month](https://img.shields.io/packagist/dm/ultrascn/admin.svg)](https://packagist.org/packages/ultrascn/admin)
+[![Latest Stable Version](https://poser.pugx.org/ultrascn/admin/v/stable)](https://github.com/ultrascn/admin/releases)
+[![License](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://github.com/ultrascn/admin/blob/master/license.md)
 
 Administration extension for Nette.
 
