@@ -23,6 +23,10 @@ class MyNavigationFactory implements INavigationFactory
 	}
 }
 
+/**
+ * @param  \Inteve\AssetsManager\AssetFile[] $files
+ * @return string[]
+ */
 function extractPaths(array $files)
 {
 	$res = [];

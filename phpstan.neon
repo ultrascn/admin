@@ -3,3 +3,11 @@ parameters:
 
 	paths:
 		- src
+		- tests
+
+	fileExtensions:
+		- php
+		- phpt
+
+	excludePaths:
+		- tests/temp

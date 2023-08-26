@@ -28,6 +28,9 @@ class NavigationFactory implements INavigationFactory
 }
 
 
+/**
+ * @return Administration
+ */
 function createAdministration()
 {
 	return new Administration(

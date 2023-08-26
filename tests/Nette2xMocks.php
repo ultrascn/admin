@@ -31,6 +31,10 @@ class MockPresenter extends \Nette\Application\UI\Presenter
 	}
 
 
+	/**
+	 * @param  string $destination
+	 * @param  array<string, mixed> $args
+	 */
 	public function link($destination, $args = [])
 	{
 		if (!is_array($args)) {

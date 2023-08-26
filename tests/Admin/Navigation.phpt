@@ -7,6 +7,9 @@ use UltraScn\Admin\Model\NavigationHelper;
 require __DIR__ . '/../bootstrap.php';
 
 
+/**
+ * @return Navigation
+ */
 function createNavigation()
 {
 	$navigation = new Navigation;
@@ -22,6 +25,10 @@ function createNavigation()
 }
 
 
+/**
+ * @param  string $currentPresenter
+ * @return string|NULL
+ */
 function selectCurrentPage(Navigation $navigation, $currentPresenter)
 {
 	NavigationHelper::trySelectCurrentPage($navigation, $currentPresenter);
