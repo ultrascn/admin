@@ -18,21 +18,21 @@
 		"inteve/application": "^1.0",
 		"inteve/assets-manager": "^0.5",
 		"inteve/navigation": "^3.1",
-		"latte/latte": "^2.4",
-		"nette/application": "^2.4",
-		"nette/http": "^2.4",
-		"nette/security": "^2.4",
+		"latte/latte": "^2.4 || ^3.0",
+		"nette/application": "^2.4 || ^3.0",
+		"nette/http": "^2.4 || ^3.0",
+		"nette/security": "^2.4 || ^3.0",
 		"typro/bridge-nette-forms": "^1.0",
 		"typro/typro": "^3.3",
-		"inteve/forms": "^1.0",
-		"inteve/datagrid": "^0.4"
+		"inteve/forms": "^1.0 || ^2.0",
+		"inteve/datagrid": "^0.4 || ^1.0"
 	},
 	"autoload": {
 		"classmap": ["src/"]
 	},
 	"require-dev": {
-		"nette/bootstrap": "^2.4",
-		"nette/di": "^2.4",
+		"nette/bootstrap": "^2.4 || ^3.0",
+		"nette/di": "^2.4 || ^3.0",
 		"nette/tester": "^2.0"
 	},
 	"extra": {
