@@ -16,6 +16,7 @@
 			'homepagePresenter' => NULL,
 			'signPresenter' => NULL,
 			'signOutLink' => NULL,
+			'layoutFooterTemplate' => NULL,
 			'assets' => [
 				'publicBasePath' => '',
 				'environment' => NULL,
@@ -74,6 +75,7 @@
 					'signPresenter' => $this->config['signPresenter'],
 					'signOutLink' => $this->config['signOutLink'],
 					'assetsManager' => $assetsManager,
+					'layoutFooterTemplate' => $this->config['layoutFooterTemplate'],
 				]);
 
 			$builder->addDefinition($this->prefix('formFactory'))
