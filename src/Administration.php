@@ -30,6 +30,9 @@
 		private $favicon = 'favicon.ico';
 
 		/** @var string|NULL */
+		private $layoutNavigationTemplate;
+
+		/** @var string|NULL */
 		private $layoutFooterTemplate;
 
 
@@ -38,6 +41,7 @@
 		 * @param  string $homepagePresenter
 		 * @param  string $signPresenter
 		 * @param  string|NULL $signOutLink
+		 * @param  string|NULL $layoutNavigationTemplate
 		 * @param  string|NULL $layoutFooterTemplate
 		 */
 		public function __construct(
@@ -47,6 +51,7 @@
 			$signOutLink,
 			AssetsManager $assetsManager,
 			INavigationFactory $navigationFactory,
+			$layoutNavigationTemplate = NULL,
 			$layoutFooterTemplate = NULL
 		)
 		{
@@ -61,6 +66,7 @@
 			$this->signOutLink = $signOutLink !== NULL ? ':' . ltrim($signOutLink, ':') : NULL;
 			$this->assetsManager = $assetsManager;
 			$this->navigationFactory = $navigationFactory;
+			$this->layoutNavigationTemplate = $layoutNavigationTemplate;
 			$this->layoutFooterTemplate = $layoutFooterTemplate;
 		}
 
@@ -154,6 +160,24 @@
 		public function getFavicon()
 		{
 			return $this->favicon;
+		}
+
+
+		/**
+		 * @return bool
+		 */
+		public function hasLayoutNavigationTemplate()
+		{
+			return $this->layoutNavigationTemplate !== NULL;
+		}
+
+
+		/**
+		 * @return string|NULL
+		 */
+		public function getLayoutNavigationTemplate()
+		{
+			return $this->layoutNavigationTemplate;
 		}
 
 

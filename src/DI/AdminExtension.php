@@ -16,6 +16,7 @@
 			'homepagePresenter' => NULL,
 			'signPresenter' => NULL,
 			'signOutLink' => NULL,
+			'layoutNavigationTemplate' => NULL,
 			'layoutFooterTemplate' => NULL,
 			'assets' => [
 				'publicBasePath' => '',
@@ -75,6 +76,7 @@
 					'signPresenter' => $this->config['signPresenter'],
 					'signOutLink' => $this->config['signOutLink'],
 					'assetsManager' => $assetsManager,
+					'layoutNavigationTemplate' => $this->config['layoutNavigationTemplate'],
 					'layoutFooterTemplate' => $this->config['layoutFooterTemplate'],
 				]);
 

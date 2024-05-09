@@ -46,7 +46,12 @@
 			</div>
 
 			{if $user->isLoggedIn()}
-				{control navigationSub}
+				{if $administration->hasLayoutNavigationTemplate()}
+					{include $administration->getLayoutNavigationTemplate()}
+
+				{else}
+					{control navigationSub}
+				{/if}
 			{/if}
 		</div>
 
