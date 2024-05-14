@@ -19,7 +19,7 @@ Administration extension for Nette.
 composer require ultrascn/admin
 ```
 
-UltraSCN\Admin requires PHP 5.6.0 or later.
+UltraSCN\Admin requires PHP 7.4.0 or later.
 
 
 ## Usage
