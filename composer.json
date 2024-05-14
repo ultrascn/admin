@@ -17,7 +17,7 @@
 		"czproject/assert": "^1.3",
 		"inteve/application": "^1.0",
 		"inteve/assets-manager": "^0.5",
-		"inteve/navigation": "^3.4",
+		"inteve/navigation": "^3.5",
 		"latte/latte": "^2.4",
 		"nette/application": "^2.4",
 		"nette/http": "^2.4",

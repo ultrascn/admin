@@ -2,8 +2,9 @@
 	<div class="navigation__inner">
 		{foreach $items as $item}
 			{var $page = $item[page]}
-			<a n:if="$page->hasLink()" href="{$linkGenerator->getUrl($page->getLink())}" n:class="navigation__item, $item[active] ? 'navigation__item--active', $item[level] > 0 ? ('navigation__item--level-' . $item['level'])">{$page->getLabel()}</a>
-			<span n:if="!$page->hasLink()" class="navigation__item navigation__item--disabled">{$page->getLabel()}</span>
+			{var $link = $item[link]}
+			<a n:if="$link !== NULL" href="{$linkGenerator->getUrl($link)}" n:class="navigation__item, $item[active] ? 'navigation__item--active', $item[level] > 0 ? ('navigation__item--level-' . $item['level'])">{$page->getLabel()}</a>
+			<span n:if="$link === NULL" n:class="navigation__item, navigation__item--disabled, $item[level] > 0 ? ('navigation__item--level-' . $item['level'])">{$page->getLabel()}</span>
 		{/foreach}
 		<a n:if="$showSignOutLink && $administration->hasSignOutLink()" href="{plink $administration->getSignOutLink()}" class="navigation__item">Odhlásit se</a>
 	</div>
