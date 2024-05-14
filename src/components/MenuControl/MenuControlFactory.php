@@ -32,6 +32,7 @@
 		{
 			$menuControl = $this->create($administration, $navigation, FALSE);
 			$menuControl->setSubLevel(1);
+			$menuControl->setLevelLimit(NULL);
 			return $menuControl;
 		}
 
